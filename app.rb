@@ -1,4 +1,6 @@
 class IdeaBoxApp < Sinatra::Base
+  require './idea'
+
   configure :development do
     register Sinatra::Reloader
   end
@@ -13,7 +15,9 @@ class IdeaBoxApp < Sinatra::Base
 
   post '/' do
    	# 1. Create an idea based on the form parameters
+ 		idea = Idea.new
  		# 2. Store it
+ 		idea.save
   	# 3. Send us back to the index page to see all ideas
   	"Creating an IDEA!"
 	end
