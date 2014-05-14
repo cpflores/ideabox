@@ -11,14 +11,14 @@ class IdeaBoxApp < Sinatra::Base
   end
 
   get '/' do
-  	erb :index, locals: {ideas: Idea.all} 
+  	erb :index, locals: {ideas: Idea.all, idea: Idea.new} 
   end
 
-  post '/' do
- 		idea = Idea.new(params['idea_title'], params['idea_description']) 		
- 		idea.save  
-  	redirect '/'
-  end
+	post '/' do
+	  idea = Idea.new(params[:idea])
+	  idea.save
+	  redirect '/'
+	end
 
   delete '/:id' do |id|
   	Idea.delete(id.to_i)
@@ -31,11 +31,7 @@ class IdeaBoxApp < Sinatra::Base
 	end
 
 	put '/:id' do |id|
-  	data = {
-    	:title => params['idea_title'],
-    	:description => params['idea_description']
-  	}
-  	Idea.update(id.to_i, data)
-  	redirect '/'
+	  Idea.update(id.to_i, params[:idea])
+	  redirect '/'
 	end
 end

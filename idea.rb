@@ -3,16 +3,16 @@ class Idea
 
 	attr_reader :title, :description
 
-	def initialize(title, description)
-		@title = title
-		@description = description
-  end
+	def initialize(attributes = {})
+	  @title = attributes["title"]
+	  @description = attributes["description"]
+	end
 	
 	def save
-		database.transaction do |db|
-			db['ideas'] ||= []
-			db['ideas'] << {title: title, description: description}
-		end
+	  database.transaction do
+	    database['ideas'] ||= []
+	    database['ideas'] << {"title" => title, "description" => description}
+	  end
 	end
 
 	def self.database
@@ -21,7 +21,7 @@ class Idea
 
 	def self.all
 	  raw_ideas.map do |data|
-	    new(data[:title], data[:description])
+	    new(data)
 	  end
 	end
 
@@ -42,8 +42,8 @@ class Idea
 	end
 
 	def self.find(id)
-		raw_idea = find_raw_idea(id)
-		new(raw_idea[:title], raw_idea[:description])
+  	raw_idea = find_raw_idea(id)
+  	new(raw_idea)
 	end
 
 	def self.find_raw_idea(id)

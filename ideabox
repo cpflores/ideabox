@@ -1,4 +1,12 @@
 ---
 ideas:
-- :title: dinner
-  :description: pizza all the time
+- title: test
+  description: hello big world
+- title: new test
+  description: does this work
+- title: yep
+  description: looks like it does
+- title: 'yes'
+  description: this still works
+- title: dinner
+  description: tacos all the time
