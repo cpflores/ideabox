@@ -1,7 +1,6 @@
-class IdeaStore
-	require 'yaml/store'
+require 'yaml/store'
 
-# We have to change the calls to new in IdeaStore so that they’re calling Idea.new instead.
+class IdeaStore
 
 	def self.database
 		@database ||= YAML::Store.new('db/ideabox')
@@ -9,7 +8,7 @@ class IdeaStore
 
 	def self.all
 	  raw_ideas.map do |data|
-	    new(data)
+	    Idea.new(data)
 	  end
 	end
 
@@ -27,7 +26,7 @@ class IdeaStore
 
 	def self.find(id)
   	raw_idea = find_raw_idea(id)
-  	new(raw_idea)
+  	Idea.new(raw_idea)
 	end
 
 	def self.find_raw_idea(id)
