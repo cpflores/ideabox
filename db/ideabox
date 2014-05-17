@@ -2,6 +2,7 @@
 ideas:
 - title: test
   description: hello big world
+  rank: 3
 - title: new test
   description: does this work
 - title: yep
