@@ -1,5 +1,6 @@
 class Idea
 	attr_reader :title, :description, :rank
+	include Comparable
 
 	def initialize(attributes = {})
 	  @title = attributes["title"]
