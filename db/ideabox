@@ -1,19 +1,11 @@
 ---
 ideas:
 - title: test
-  description: hello big world
+  description: this works
   rank: 3
-- title: new test
-  description: does this work
-- title: yep
-  description: looks like it does
-- title: 'yes'
-  description: this still works
-- title: dinner
-  description: tacos all the time
-- title: sport
-  description: basketball and football
-- title: big
-  description: the big one
-- title: nice
-  description: this one is done
+- title: movies
+  description: sequels galore
+  rank: 2
+- title: sports
+  description: baseketball
+  rank: 5
